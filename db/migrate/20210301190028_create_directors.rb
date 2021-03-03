@@ -7,6 +7,6 @@ class CreateDirectors < ActiveRecord::Migration[5.2]
       t.timestamps
     end
 
-    add_reference :movies, :directors, index: true, foreign_key: true
+    add_reference :movies, :director, index: true, foreign_key: true
   end
 end

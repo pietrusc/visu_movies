@@ -14,7 +14,7 @@ class CreateMovies < ActiveRecord::Migration[5.2]
       t.string :country
       t.string :content_rating
       t.bigint :budget
-      t.integer :title_year
+      t.integer :release_year
       t.decimal :imdb_score
       t.decimal :aspect_ratio
       t.integer :fb_likes

@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 2021_03_01_190907) do
     t.string "country"
     t.string "content_rating"
     t.bigint "budget"
-    t.integer "title_year"
+    t.integer "release_year"
     t.decimal "imdb_score"
     t.decimal "aspect_ratio"
     t.integer "fb_likes"
@@ -51,8 +51,8 @@ ActiveRecord::Schema.define(version: 2021_03_01_190907) do
     t.text "genres"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "directors_id"
-    t.index ["directors_id"], name: "index_movies_on_directors_id"
+    t.bigint "director_id"
+    t.index ["director_id"], name: "index_movies_on_director_id"
   end
 
   create_table "movies_actors", force: :cascade do |t|
@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 2021_03_01_190907) do
     t.index ["movie_id"], name: "index_movies_actors_on_movie_id"
   end
 
-  add_foreign_key "movies", "directors", column: "directors_id"
+  add_foreign_key "movies", "directors"
   add_foreign_key "movies_actors", "actors"
   add_foreign_key "movies_actors", "movies"
 end
