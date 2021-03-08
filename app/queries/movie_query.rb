@@ -19,12 +19,14 @@ class MovieQuery
       direction = 'desc' if @params[:sort].start_with?('-')
       sort = @params[:sort].delete_prefix('-')
     end
+    raise Errors::InvalidSortParam unless Movie.attribute_names.include?(sort)
+
     @results = @results.order(sort => direction)
   end
 
   def actor_filter
     return if @params[:filter].blank? || @params[:filter][:actor_id].blank?
 
-    @results.joins(:movies_actors).merge(MoviesActor.where(actor_id: @params[:filter][:actor_id].split(',')))
+    @results = @results.joins(:movies_actors).merge(MoviesActor.where(actor_id: @params[:filter][:actor_id].split(',')))
   end
 end

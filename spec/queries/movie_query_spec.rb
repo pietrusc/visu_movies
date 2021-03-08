@@ -19,16 +19,18 @@ RSpec.describe MovieQuery do
   end
 
   context 'with actor_id filter' do
-    let(:movies_actor1) { create :movies_actor }
+    let(:movies_actor) { create :movies_actor }
     let(:movies_actor2) { create :movies_actor }
-    let(:movies_actor3) { create :movies_actor }
-    let(:actor_ids) { "#{movies_actor2.actor_id}, #{movies_actor3.actor_id}"}
+    let(:actor_ids) { "#{movies_actor.actor_id}, #{movies_actor2.actor_id}"}
     let(:params) do
       { "filter"=>{"actor_id"=>actor_ids} }.with_indifferent_access
     end
+    before do
+      create :movies_actor
+    end
 
     it 'returns filtered movies' do
-      expect(subject.map(&:id)).to match_array([movies_actor2.movie_id, movies_actor3.movie_id])
+      expect(subject.map(&:id)).to match_array([movies_actor.movie_id, movies_actor2.movie_id])
     end
   end
 end
