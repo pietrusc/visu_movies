@@ -33,7 +33,7 @@ class ImportMovies
         country: row['country'],
         content_rating: row['content_rating'],
         budget: row['budget'],
-        release_year: row['title_year'],
+        year: row['title_year'],
         imdb_score: row['imdb_score'],
         aspect_ratio: row['aspect_ratio'],
         fb_likes: row['movie_facebook_likes']
@@ -42,13 +42,13 @@ class ImportMovies
 
   def create_actors(row, movie)
     (1..3).each do |i|
-      actor = Actor.find_by(name: row["actor_#{i}_name"]) || Actor.create!(name: row["actor_#{i}_name"], fb_likes: row["actor_#{i}_facebook_likes"])
+      actor = Actor.where(name: row["actor_#{i}_name"]).first_or_create!(fb_likes: row["actor_#{i}_facebook_likes"])
       MoviesActor.create!(actor: actor, movie: movie)
     end
   end
 
   def create_director(row)
-    Director.find_by(name: row['director_name']) || Director.create!(name: row['director_name'], fb_likes: row['director_facebook_likes'])
+    Director.where(name: row['director_name']).first_or_create!(fb_likes: row['director_facebook_likes'])
   end
 
   def color?(value)
