@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 2021_03_01_190907) do
     t.string "country"
     t.string "content_rating"
     t.bigint "budget"
-    t.integer "release_year"
+    t.integer "year"
     t.decimal "imdb_score"
     t.decimal "aspect_ratio"
     t.integer "fb_likes"
