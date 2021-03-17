@@ -30,13 +30,13 @@ class CreateMovieService
 
   def add_movie_actors
     @form.actor_ids.each do |actor_id|
-      MoviesActor.create!(actor: Actor.find(actor_id), movie: @movie)
+      MoviesActor.create!(actor: Actor.find(actor_id), movie: movie)
     end
   end
 
   def update_total_budget
     total_budget = if director.total_budget.present?
-                     director.total_budget + @movie.budget
+                     director.total_budget + movie.budget
                    else
                      director.movies.sum(:budget)
                    end
@@ -44,6 +44,8 @@ class CreateMovieService
   end
 
   def send_newsletter
-    true
+    Customer.pluck(:email).each do |email|
+      NewsletterMailer.with(email: email).new_movie_added(movie).deliver_later
+    end
   end
 end
