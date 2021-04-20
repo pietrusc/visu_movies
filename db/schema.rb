@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_14_133638) do
+ActiveRecord::Schema.define(version: 2021_03_14_203321) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,8 @@ ActiveRecord::Schema.define(version: 2021_03_14_133638) do
     t.integer "fb_likes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "movies_count"
+    t.bigint "total_budget"
   end
 
   create_table "movies", force: :cascade do |t|
