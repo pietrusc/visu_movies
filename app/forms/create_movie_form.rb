@@ -4,9 +4,10 @@ class CreateMovieForm
   include ActiveModel::Model
 
   attr_accessor(
-    :title, :year, :color, :num_critic_for_reviews, :duration, :gross, :num_voted_users, :facenumber_in_poster,
-    :imdb_link, :num_user_for_reviews, :language, :country, :content_rating, :budget, :imdb_score,
-    :aspect_ratio, :fb_likes, :plot_keywords, :genres, :director_id, :actor_ids
+    :title, :year, :color, :num_critic_for_reviews, :duration, :gross, :num_voted_users,
+    :facenumber_in_poster, :imdb_link, :num_user_for_reviews, :language, :country, :content_rating,
+    :budget, :imdb_score, :aspect_ratio, :fb_likes, :plot_keywords, :genres, :director_id,
+    :actor_ids
   )
 
   validates :title, :budget, :genres, :director_id, :actor_ids, presence: true
