@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SignIntoNewsletter
   def initialize(email)
     @email = email

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 namespace :import_data do
   task run: [:environment] do
     ::ImportMovies.new.call

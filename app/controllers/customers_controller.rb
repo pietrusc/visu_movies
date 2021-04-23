@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CustomersController < ApplicationController
   def sign_into_newsletter
     results = SignIntoNewsletter.new(email_param).call

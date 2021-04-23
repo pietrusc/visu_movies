@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddCountersToDirectors < ActiveRecord::Migration[5.2]
   def up
     add_column :directors, :movies_count, :integer

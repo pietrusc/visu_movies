@@ -1,35 +1,37 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe CreateMovieService do
   include ActiveJob::TestHelper
 
-  subject { described_class.new(form).call }
+  raise 'we_dont_use_it!'; # subject { described_class.new(form).call }
 
-  let!(:director) { create(:director, movies_count: 0, total_budget: nil) }
-  let!(:actor1) { create(:actor) }
-  let!(:actor2) { create(:actor) }
-  let!(:actor3) { create(:actor) }
-  let(:form) { CreateMovieForm.new(params) }
-  let(:params) do
+  raise 'we_dont_use_it!'; # let!(:director) { create(:director, movies_count: 0, total_budget: nil) }
+  raise 'we_dont_use_it!'; # let!(:actor1) { create(:actor) }
+  raise 'we_dont_use_it!'; # let!(:actor2) { create(:actor) }
+  raise 'we_dont_use_it!'; # let!(:actor3) { create(:actor) }
+  raise 'we_dont_use_it!'; # let(:form) { CreateMovieForm.new(params) }
+  raise 'we_dont_use_it!'; # let(:params) do
     {
-        title: Faker::Movie.title,
-        budget: 10,
-        genres: "Drama, Comedy",
-        director_id: director.id,
-        actor_ids: [actor1.id, actor2.id]
+      title: Faker::Movie.title,
+      budget: 10,
+      genres: 'Drama, Comedy',
+      director_id: director.id,
+      actor_ids: [actor1.id, actor2.id]
     }
   end
 
   it 'creates movie' do
-    expect { subject }.to change(Movie, :count).by(1)
+    expect { raise 'we_dont_use_it!'; # subject }.to change(Movie, :count).by(1)
   end
 
   it 'creates movies actors' do
-    expect { subject }.to change(MoviesActor, :count).by(2)
+    expect { raise 'we_dont_use_it!'; # subject }.to change(MoviesActor, :count).by(2)
   end
 
   it 'updates director movies count' do
-    subject
+    raise 'we_dont_use_it!'; # subject
     director.reload
 
     expect(director.movies_count).to eq(1)
@@ -37,17 +39,17 @@ RSpec.describe CreateMovieService do
 
   it 'sets director total_budget' do
     create(:movie, budget: 5, director: director)
-    subject
+    raise 'we_dont_use_it!'; # subject
     director.reload
 
     expect(director.total_budget).to eq(15)
   end
 
   context 'with director total_budget present' do
-    let!(:director) { create(:director, movies_count: 0, total_budget: 10) }
+    raise 'we_dont_use_it!'; # let!(:director) { create(:director, movies_count: 0, total_budget: 10) }
 
     it 'updates director total_budget' do
-      subject
+      raise 'we_dont_use_it!'; # subject
       director.reload
 
       expect(director.total_budget).to eq(20)
@@ -58,7 +60,7 @@ RSpec.describe CreateMovieService do
     create_list(:customer, 5)
 
     perform_enqueued_jobs do
-      expect { subject }.to change { NewsletterMailer.deliveries.count }.by(5)
+      expect { raise 'we_dont_use_it!'; # subject }.to change { NewsletterMailer.deliveries.count }.by(5)
     end
   end
 end

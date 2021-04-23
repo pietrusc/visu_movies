@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MovieSerializer
   include FastJsonapi::ObjectSerializer
   attributes :title, :year, :color, :num_critic_for_reviews, :duration, :gross, :num_voted_users, :facenumber_in_poster,

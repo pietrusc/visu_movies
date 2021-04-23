@@ -1,7 +1,7 @@
-module Errors
-  class InvalidEmailFormat < StandardError
-    def message
-      'Invalid email format'
-    end
+# frozen_string_literal: true
+
+class Errors::InvalidEmailFormat < StandardError
+  def message
+    'Invalid email format'
   end
 end

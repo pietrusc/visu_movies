@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
 class CreateMovieService
   attr_reader :movie, :error
+
   def initialize(form)
     @form = form
   end
@@ -15,12 +18,10 @@ class CreateMovieService
 
   private
 
-  def transaction_with_error_handling
-    ActiveRecord::Base.transaction do
-      yield
-    end
-  rescue StandardError => error
-    @error = error
+  def transaction_with_error_handling(&block)
+    ActiveRecord::Base.transaction(&block)
+  rescue StandardError => e
+    @error = e
     false
   end
 
